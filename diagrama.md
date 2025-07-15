@@ -20,19 +20,28 @@ classDiagram
         +nome : string
         +tipo : string
         +set_dados() : void
+        +get_nome() : string
+        +get_tipo() : string
     }
 
     class Cliente {
         -cpf : string
         -telefone : string
         +set_dados() : void
+        +get_cpf() : string
+        +get_telefone() : string
     }
 
     class Funcionario {
         -cargo : string
         -numQuartos : int
+        -salarioBase : double
+        -bonusPorQuarto : double
+        -bonusPorCargo : double
         +set_dados() : void
-        +salario() : float
+        +get_cargo() : string
+        +get_numQuartos() : int
+        +calcular_salario() : double
     }
 
     class Quarto {

@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -8,8 +8,9 @@ private:
     string nome;
     string tipo;
 public:
-    void set_nome();
-    void set_tipo();
-    string get_nome();
-    string get_tipo();
+    Pessoa(string nome, string tipo);
+    virtual void set_dados();
+    string get_nome() const;
+    string get_tipo() const;
+    virtual ~Pessoa() = default;
 };

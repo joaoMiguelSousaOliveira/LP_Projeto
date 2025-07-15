@@ -1,21 +1,25 @@
 #include "../include/pessoa.hpp"
+#include <iostream>
 
 using namespace std;
 
-void Pessoa::set_nome() {
+Pessoa::Pessoa(string nome, string tipo) : nome(nome), tipo(tipo) {
+}
+
+void Pessoa::set_dados() {
     cout << "Digite o nome: ";
-    cin >> nome;
+    getline(cin, nome);
+    
+    cout << endl <<"Cadastro [Cliente / Funcionário]: ";
+    getline(cin, tipo);
+
+    cout << endl;
 } 
 
-string Pessoa::get_nome() {
+string Pessoa::get_nome() const{
     return nome;
 }
 
-void Pessoa::set_tipo() {
-    cout << "Digite o tipo: ";
-    cin >> tipo;
-} 
-
-string Pessoa::get_tipo() {
+string Pessoa::get_tipo() const {
     return tipo;
 }
