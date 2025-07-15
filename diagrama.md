@@ -98,11 +98,12 @@ classDiagram
     class Reserva {
         -cliente : Cliente
         -quarto : Quarto
-        -data_entrada : string
-        -data_saida : string
+        -data_entrada : time_t
+        -data_saida : time_t
         +set_dados() : void
-        +calcular_reserva() : double 
-        +exibir_dados() : void
+        +get_data_entrada() : time_t
+        +get_data_saida() : time_t
+        +calcular_valor_total() : double 
     }
 
     class Pagamento {
