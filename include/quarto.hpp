@@ -1,16 +1,28 @@
 #pragma once
-#include "hotel.hpp"
 
 using namespace std;
 
-class Quarto : public Hotel {
+class Quarto {
 private:
     int numero;
-    string tipo;
+    int tipo;
+protected:
+    double valor_base_diaria = 100.0;
+    bool arCondicionado = false;
+    bool hidromassagem = false;
+    bool cafeIncluso = false;
+    bool almocoIncluso = false;
+    bool jantaIncluso = false;
+    bool estacionamento = false;
+    bool servicoQuarto = false; 
+
 public:
-    Quarto(Lista<Pessoa*> lista_pessoas, Lista<Quarto*> lista_quartos, int numero, string tipo);
-    void set_dados();
-    string get_numero() const;
-    string get_tipo() const;
+    Quarto(int numero, int tipo);
+    virtual void set_dados();
+    virtual double get_valor();     
+    int get_numero() const;
+    int get_tipo() const;
+    
+    double valor_diaria();
     virtual ~Quarto() = default;
 };

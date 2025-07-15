@@ -46,37 +46,53 @@ classDiagram
 
     class Quarto {
         -numero : int
-        -tipo: string
-        +set_dados() : void
-        -tipo_quarto() : void
+        -tipo: int
+        #arCondicionado : bool
+        #hidromassagem : bool
+        #cafeIncluso : bool
+        #almocoIncluso : bool
+        #jantaIncluso : bool
+        #estacionamento : bool
+        #servicoQuarto : bool
+        +*set_dados()* : void
+        +*get_valor()* : double
+        +get_numero() : int
+        +get_tipo() : int
+        +valor_diaria() : double
+        +*~Quarto()*
     }
 
     class Suite {
-        -cafeIncluso : bool
-        -estacionamento : bool
-        -valor : double
+        #arCondicionado : bool
+        #cafeIncluso : bool
+        #estacionamento : bool
         +set_dados() : void
+        +get_valor() : double
+        +*~Suite()*
     }
 
     class Quarto_Casal {
-        -hidromassagem : bool
-        -cafeIncluso : bool
-        -estacionamento : bool
-        -servicoQuarto : bool
-        -valor : double
+        #arCondicionado : bool
+        #hidromassagem : bool
+        #cafeIncluso : bool
+        #estacionamento : bool
+        #servicoQuarto : bool
         +set_dados() : void
+        +get_valor() : double
+        +*~Casal()*
     }
 
     class Presidencial {
-        -incluiGaragem : bool
-        -hidromassagem : bool
-        -cafeIncluso : bool
-        -almocoIncluso : bool
-        -jantaIncluso : bool
-        -estacionamento : bool
-        -servicoQuarto : bool
-        -valor : double
+        #arCondicionado : bool
+        #hidromassagem : bool
+        #cafeIncluso : bool
+        #almocoIncluso : bool
+        #jantaIncluso : bool
+        #estacionamento : bool
+        #servicoQuarto : bool
         +set_dados() : void
+        +get_valor() : double
+        +*~Presidencial()*
     }
 
     class Reserva {
