@@ -59,7 +59,7 @@ classDiagram
         +get_numero() : int
         +get_tipo() : int
         +valor_diaria() : double
-        +*~Quarto()*
+        *+~Quarto()*
     }
 
     class Suite {
@@ -68,7 +68,7 @@ classDiagram
         #estacionamento : bool
         +set_dados() : void
         +get_valor() : double
-        +*~Suite()*
+        *+~Suite()*
     }
 
     class Quarto_Casal {
@@ -79,7 +79,7 @@ classDiagram
         #servicoQuarto : bool
         +set_dados() : void
         +get_valor() : double
-        +*~Casal()*
+        *+~Casal()*
     }
 
     class Presidencial {
@@ -92,7 +92,7 @@ classDiagram
         #servicoQuarto : bool
         +set_dados() : void
         +get_valor() : double
-        +*~Presidencial()*
+        *+~Presidencial()*
     }
 
     class Reserva {
