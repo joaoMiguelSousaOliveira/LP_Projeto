@@ -1,4 +1,10 @@
 #include "../include/reserva.hpp"
+#include "../include/cliente.hpp"
+#include "../include/quarto.hpp"
+#include "../include/suite.hpp"
+#include "../include/quarto_casal.hpp"
+#include "../include/presidencial.hpp"
+#include "../include/funcionario.hpp"
 #include <iostream>
 
 
@@ -29,6 +35,6 @@ int Reserva::calcular_dias() {
 }
 
 double Reserva::calcular_valor_total() {
-    valorTotal = quarto->valor_diaria() * calcular_dias();
+    valorTotal = quarto->get_valor() * calcular_dias();
     return valorTotal;
 }

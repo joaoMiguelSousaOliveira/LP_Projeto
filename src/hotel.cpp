@@ -1,4 +1,8 @@
 #include "../include/hotel.hpp"
+#include "../include/lista.hpp"
+#include "../include/pessoa.hpp"
+#include "../include/quarto.hpp"
+#include "../include/reserva.hpp"
 
 
 Hotel::Hotel (Lista<Pessoa*> lista_pessoas, Lista<Quarto*> lista_quartos) :   lista_pessoas(lista_pessoas), lista_quartos(lista_quartos) {}

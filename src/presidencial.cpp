@@ -1,4 +1,5 @@
 #include "../include/presidencial.hpp"
+#include "../include/quarto.hpp"
 #include <iostream>
 using namespace std;
 

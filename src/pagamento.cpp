@@ -1,4 +1,10 @@
 #include "../include/pagamento.hpp"
+#include "../include/cliente.hpp"
+#include "../include/quarto.hpp"
+#include "../include/suite.hpp"
+#include "../include/quarto_casal.hpp"
+#include "../include/presidencial.hpp"
+
 #include <iostream>
 
 

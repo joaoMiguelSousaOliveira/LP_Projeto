@@ -11,7 +11,14 @@ void Quarto::set_dados() {
     
     cout << endl << "Selecione o quarto desejado [Suite - 1], [Quarto de Casal - 2], [Presidencial - 3]: ";
     cin >> tipo;
-
+    cout << endl;
+    while (tipo < 1 || tipo > 3) {
+        cout << "Tipo inválido! Digite novamente: ";
+        cin >> tipo;
+    }
+    cin.ignore();
+    cout << "Número do quarto: " << numero << endl;
+    cout << "Tipo do quarto: " << tipo << endl;
     cout << endl;
 
 } 
@@ -38,5 +45,6 @@ double Quarto::valor_diaria() {
 }
 
 double Quarto::get_valor() {
-    return valor_diaria();
+    double valorTotal = valor_diaria();
+    return valorTotal;
 }

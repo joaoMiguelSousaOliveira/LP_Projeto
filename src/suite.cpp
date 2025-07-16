@@ -1,4 +1,5 @@
 #include "../include/suite.hpp"
+#include "../include/quarto.hpp"
 #include <iostream>
 using namespace std;
 

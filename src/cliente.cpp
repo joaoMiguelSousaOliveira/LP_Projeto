@@ -1,4 +1,5 @@
 #include "../include/cliente.hpp"
+#include "../include/pessoa.hpp"
 #include <iostream>
 
 using namespace std;

@@ -1,4 +1,5 @@
 #include "../include/quarto_casal.hpp"
+#include "../include/quarto.hpp"
 #include <iostream>
 using namespace std;
 

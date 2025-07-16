@@ -1,4 +1,5 @@
 #include "../include/funcionario.hpp"
+#include "../include/pessoa.hpp"
 #include <iostream>
 using namespace std;
 
@@ -7,13 +8,21 @@ Funcionario::Funcionario(string nome, int tipo,string cargo, int numQuartos) : P
 }
 
 void Funcionario::set_dados() {
-    cout << "Cargo: ";
-    getline(cin, cargo);
+    cout << "Cargo [C - Camareira, R - Recepcionista, G - Gerente, CO - Cozinheiro]: ";
+    cin >> cargo;
+    cin.ignore();
     
-    cout << endl << "Número de quartos: ";
-    cin >> numQuartos;
+    // Validação do cargo
+    while (cargo != "C" && cargo != "R" && cargo != "G" && cargo != "CO") {
+        cout << "Cargo inválido! Digite novamente: ";
+        cin >> cargo;
+        cin.ignore(); 
+    }
 
-    cout << endl;
+    cout << "Número de quartos sob sua responsabilidade: ";
+    cin >> numQuartos;
+    
+    cin.ignore();
 
 } 
 
@@ -26,16 +35,15 @@ int Funcionario::get_numQuartos() const {
 }
 
 double Funcionario::calcular_salario() {
-    if (cargo == "camareira") {
+    if (cargo == "C") {
         bonusPorCargo = 250.0; 
-    } else if (cargo == "recepcionista") {
+    } else if (cargo == "R") {
         bonusPorCargo = 100.0; 
-    } else if (cargo == "gerente") {
+    } else if (cargo == "G") {
         bonusPorCargo = 500.0; 
-    } else if (cargo == "cozinheiro") {
-        bonusPorCargo = 350.0;
     } else {
-        bonusPorCargo = 0.0;
+        bonusPorCargo = 350.0;
     }
+    
     return salarioBase + (numQuartos * bonusPorQuarto) + bonusPorCargo;
 }
