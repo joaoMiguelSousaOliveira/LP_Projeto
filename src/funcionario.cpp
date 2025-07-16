@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Funcionario::Funcionario(string nome, string tipo,string cargo, int numQuartos) : Pessoa(nome, tipo), cargo(cargo), numQuartos(numQuartos) {
+Funcionario::Funcionario(string nome, int tipo,string cargo, int numQuartos) : Pessoa(nome, tipo), cargo(cargo), numQuartos(numQuartos) {
     numQuartos = 0;
 }
 

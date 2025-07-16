@@ -3,16 +3,16 @@
 
 using namespace std;
 
-Pessoa::Pessoa(string nome, string tipo) : nome(nome), tipo(tipo) {
+Pessoa::Pessoa(string nome, int tipo) : nome(nome), tipo(tipo) {
 }
 
 void Pessoa::set_dados() {
-    cout << "Digite o nome: ";
+    cout << "Digite o nome da pessoa: ";
     getline(cin, nome);
-    
-    cout << endl <<"Cadastro [Cliente / Funcionário]: ";
-    getline(cin, tipo);
+    cin.ignore();
 
+    cout << endl <<"Cadastro [1 - Cliente] [2 - Funcionário]: ";
+    cin >> tipo;
     cout << endl;
 } 
 
@@ -20,6 +20,6 @@ string Pessoa::get_nome() const{
     return nome;
 }
 
-string Pessoa::get_tipo() const {
+int Pessoa::get_tipo() const {
     return tipo;
 }

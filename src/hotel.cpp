@@ -10,3 +10,6 @@ void Hotel::adicionar_quarto(Quarto* quarto) {
     lista_quartos.adicionar(quarto);
 }
 
+void Hotel::adicionar_reserva(Reserva* reserva) {
+    lista_reservas.adicionar(reserva);
+}

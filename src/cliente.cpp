@@ -3,14 +3,17 @@
 
 using namespace std;
 
-Cliente::Cliente(string nome, string tipo, string cpf, string telefone, string email) : Pessoa(nome, tipo), cpf(cpf), telefone(telefone), email(email){}
+Cliente::Cliente(string nome, int tipo, string cpf, string telefone, string email) : Pessoa(nome, tipo), cpf(cpf), telefone(telefone), email(email){}
 
 void Cliente::set_dados() {
     cout << "Digite o cpf: ";
     getline(cin, cpf);
     
-    cout << endl << "Digite o telefone: ";
+    cout << endl << "Digite o Telefone: ";
     getline(cin, telefone);
+
+    cout << endl << "Digite o Email: ";
+    getline(cin, email);
 
     cout << endl;
 } 
@@ -21,4 +24,8 @@ string Cliente::get_cpf() const {
 
 string Cliente::get_telefone() const {
     return telefone;
+}
+
+string Cliente::get_email() const {
+    return email;
 }

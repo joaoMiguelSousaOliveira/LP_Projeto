@@ -10,5 +10,9 @@ private:
 public:
     void adicionar(T elemento);
     void remover(int indice);
-    vector<T> get_elementos();
+    void atualizar(int indice, T elemento);
+    bool vazia() const;
+    int tamanho() const;
+    T& operator[](int indice);          
+    const T& get_elementos(int indice) const; 
 };

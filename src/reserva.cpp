@@ -21,9 +21,6 @@ time_t Reserva::get_data_entrada() const{
 time_t Reserva::get_data_saida() const{
     return dataSaida;
 }
-double Reserva::get_valor_total() const {
-    return valorTotal;
-}
 
 int Reserva::calcular_dias() {
     double segundos = difftime(dataSaida, dataEntrada);

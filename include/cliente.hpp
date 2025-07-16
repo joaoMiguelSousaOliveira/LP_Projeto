@@ -9,7 +9,7 @@ private:
     string telefone;
     string email;
 public:
-    Cliente(string nome, string tipo, string cpf, string telefone, string email);
+    Cliente(string nome, int tipo, string cpf, string telefone, string email);
     void set_dados() override;
     string get_cpf() const;
     string get_telefone() const;

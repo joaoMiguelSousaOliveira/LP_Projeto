@@ -13,7 +13,7 @@ private:
 
 public:
     
-    Funcionario(string nome, string tipo, string cargo, int numQuartos);
+    Funcionario(string nome, int tipo, string cargo, int numQuartos);
     void set_dados() override;
     string get_cargo() const;
     int get_numQuartos() const;
