@@ -18,16 +18,17 @@ public:
     }
 
     void remover(int indice) {
-        if (indice >= 0 && indice < elementos.size()) {
-            elementos.erase(elementos.begin() + indice);
+        if (indice >= 0 && static_cast<typename std::vector<T>::size_type>(indice) < elementos.size()) {
+            elementos.erase(elementos.begin() + static_cast<typename std::vector<T>::size_type>(indice));
         }
     }
 
     void atualizar(int indice, T elemento) {
-        if (indice >= 0 && indice < elementos.size()) {
-            elementos[indice] = elemento;
+        if (indice >= 0 && static_cast<typename std::vector<T>::size_type>(indice) < elementos.size()) {
+            elementos[static_cast<typename std::vector<T>::size_type>(indice)] = elemento;
         } 
     }
+
 
     bool vazia() const {
         return elementos.empty();
@@ -38,14 +39,15 @@ public:
     }
 
     T& operator[](int indice) {
-        return elementos[indice];
+        return elementos[static_cast<typename std::vector<T>::size_type>(indice)];
     } 
 
+
     const T& get_elementos(int indice) const {
-        if (indice < 0 || indice >= elementos.size()) {
+        if (indice < 0 || static_cast<typename std::vector<T>::size_type>(indice) >= elementos.size()) {
             throw std::out_of_range("Índice fora do intervalo da lista");
         }
-        return elementos[indice];
+        return elementos[static_cast<typename std::vector<T>::size_type>(indice)];
     }
     
     virtual ~Lista() = default; 

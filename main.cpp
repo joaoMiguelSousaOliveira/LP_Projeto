@@ -41,7 +41,7 @@ int main() {
         cout << "  1 - Iniciar cadastro de pessoas" << endl;
         cout << "  2 - Iniciar cadastro de quartos" << endl;
         cout << "  3 - Efetuar reserva" << endl;
-        cout << "  4 - Alterar o último dado cadastrado" << endl;
+        cout << "  4 - Alterar dado Cadastrado [Cliente / Quarto]" << endl;
         cout << "  5 - Excluir o último dado cadastrado" << endl;
         cout << "  0 - Encerrar o programa" << endl;
         cout << "----------------------------------------------" << endl;
@@ -142,7 +142,7 @@ int main() {
 
             cout << "Escolha o índice do cliente: ";
             cin >> idxCliente;
-
+            cout << endl;
             
             if (idxCliente < 0 || idxCliente >= hotel->lista_pessoas.tamanho()) {
                 cout << "Índice de cliente inválido!" << endl;
@@ -156,6 +156,7 @@ int main() {
             }
 
             // Seleciona quarto
+            cout << endl;
             cout << "Quartos cadastrados:" << endl;
             for (int i = 0; i < hotel->lista_quartos.tamanho(); ++i) {
                 Quarto *q = hotel->lista_quartos[i];
@@ -171,32 +172,169 @@ int main() {
             Quarto *quarto = hotel->lista_quartos[idxQuarto];
             cout << endl;
             // Seleciona datas
-            time_t dataEntrada, dataSaida;
-            cout << "Informe a data de entrada (AAA-MM-DD): ";
-            cin >> dataEntrada;
-            cout << "Informe a data de saída (AAA-MM-DD): ";
-            cin >> dataSaida;
-            if (dataSaida <= dataEntrada) {
-                cout << "Data de saída deve ser posterior à data de entrada!" << endl;
+            int diasEstadia;
+            cout << "Informe o número de dias de estadia: ";
+            cin >> diasEstadia;
+
+            if (diasEstadia <= 0) {
+                cout << "Insira um número de dias válidos!" << endl;
                 continue;
             }
 
             // Cria reserva
-            Reserva *reserva = new Reserva(cliente, quarto, dataEntrada, dataSaida);
-            hotel->lista_reservas.adicionar(reserva);
-
+            Reserva *reserva = new Reserva(cliente, quarto, diasEstadia);
+            
             cout << "Reserva cadastrada com sucesso!" << endl;
             cout << "Valor total da reserva: R$ " << reserva->calcular_valor_total() << endl;
-    
+
+            hotel->lista_reservas.adicionar(reserva);
+
+        // Altera dado selecionado (Cliente ou Quarto)
         } else if (resposta == 4) {
 
-            // Alterar o último dado cadastrado
-            cout << "Funcionalidade de alteração ainda não implementada." << endl;
+            // Verifica se há clientes e quartos cadastrados
+            if (hotel->lista_pessoas.vazia()) {
+                cout << "Cadastre pelo menos um cliente!" << endl;
+                continue;
+            } if (hotel->lista_quartos.vazia()) {
+                cout << "Cadastre pelo menos um quarto!" << endl;
+                continue;
+            }
+            int dadoEscolhido;
+            cout << "Selecione o tipo de dado a ser alterado [1 - Cliente] [2 - Quarto]: ";
+            cin >> dadoEscolhido;
+            cout << "----------------------------------------------" << endl;
+
+            if (dadoEscolhido != 1 && dadoEscolhido != 2) {
+                cout << "Opção inválida! Tente novamente." << endl;
+                continue;
+            } else if (dadoEscolhido == 1) {
+            // Seleciona cliente
+                cout << "Clientes cadastrados:" << endl;
+                for (size_t i = 0; i < static_cast<size_t>(hotel->lista_pessoas.tamanho()); i++) {
+
+                    Cliente *cliente = dynamic_cast<Cliente *>(hotel->lista_pessoas[i]);
+
+                    if (cliente) {
+                        cout << i << " - " << cliente->get_nome() << " (CPF: " << cliente->get_cpf() << ")" << endl;
+                    }
+                }
+                cout << endl;
+
+                int idxCliente;
+
+                cout << "Escolha o índice do cliente: ";
+                cin >> idxCliente;
+                cout << endl;
+                
+                if (idxCliente < 0 || idxCliente >= hotel->lista_pessoas.tamanho()) {
+                    cout << "Índice de cliente inválido!" << endl;
+                    continue;
+                }
+                
+                Cliente *cliente = dynamic_cast<Cliente *>(hotel->lista_pessoas[idxCliente]);
+                if (!cliente) {
+                    cout << "Selecione um cliente válido!" << endl;
+                    continue;
+                }
+
+                cliente->set_dados();
+            } else {
+
+            // Seleciona quarto
+                cout << endl;
+                cout << "Quartos cadastrados:" << endl;
+                for (int i = 0; i < hotel->lista_quartos.tamanho(); ++i) {
+                    Quarto *q = hotel->lista_quartos[i];
+                    cout << i << " - Quarto " << q->get_numero() << " (Tipo: " << q->get_tipo() << ")" << endl;
+                }
+                int idxQuarto;
+                cout << "Escolha o índice do quarto: ";
+                cin >> idxQuarto;
+                Quarto *quarto = hotel->lista_quartos[idxQuarto];
+                if (!quarto) {
+                    cout << "Índice de quarto inválido!" << endl;
+                    continue;
+                }
+                
+                quarto->set_dados();
+            
+            }
+            
 
         } else if (resposta == 5) {
 
-            // Excluir o último dado cadastrado
-            cout << "Funcionalidade de exclusão ainda não implementada." << endl;
+            // Verifica se há clientes e quartos cadastrados
+            if (hotel->lista_pessoas.vazia()) {
+                cout << "Cadastre pelo menos um cliente!" << endl;
+                continue;
+            } if (hotel->lista_quartos.vazia()) {
+                cout << "Cadastre pelo menos um quarto!" << endl;
+                continue;
+            }
+            int dadoEscolhido;
+            cout << "Selecione o tipo de dado a ser alterado [1 - Cliente] [2 - Quarto]: ";
+            cin >> dadoEscolhido;
+            cout << "----------------------------------------------" << endl;
+
+            if (dadoEscolhido != 1 && dadoEscolhido != 2) {
+                cout << "Opção inválida! Tente novamente." << endl;
+                continue;
+            } else if (dadoEscolhido == 1) {
+            // Seleciona cliente
+                cout << "Clientes cadastrados:" << endl;
+                for (size_t i = 0; i < static_cast<size_t>(hotel->lista_pessoas.tamanho()); i++) {
+
+                    Cliente *cliente = dynamic_cast<Cliente *>(hotel->lista_pessoas[i]);
+
+                    if (cliente) {
+                        cout << i << " - " << cliente->get_nome() << " (CPF: " << cliente->get_cpf() << ")" << endl;
+                    }
+                }
+                cout << endl;
+
+                int idxCliente;
+
+                cout << "Escolha o índice do cliente: ";
+                cin >> idxCliente;
+                cout << endl;
+                
+                if (idxCliente < 0 || idxCliente >= hotel->lista_pessoas.tamanho()) {
+                    cout << "Índice de cliente inválido!" << endl;
+                    continue;
+                }
+                
+                Cliente *cliente = dynamic_cast<Cliente *>(hotel->lista_pessoas[idxCliente]);
+                if (!cliente) {
+                    cout << "Selecione um cliente válido!" << endl;
+                    continue;
+                }
+
+                delete cliente;
+                hotel->lista_pessoas.remover(idxCliente);
+                cout << "Cliente removido com sucesso!" << endl;
+            } else {
+
+            // Seleciona quarto
+                cout << endl;
+                cout << "Quartos cadastrados:" << endl;
+                for (int i = 0; i < hotel->lista_quartos.tamanho(); ++i) {
+                    Quarto *q = hotel->lista_quartos[i];
+                    cout << i << " - Quarto " << q->get_numero() << " (Tipo: " << q->get_tipo() << ")" << endl;
+                }
+                int idxQuarto;
+                cout << "Escolha o índice do quarto: ";
+                cin >> idxQuarto;
+                Quarto *quarto = hotel->lista_quartos[idxQuarto];
+                if (!quarto) {
+                    cout << "Índice de quarto inválido!" << endl;
+                    continue;
+                }
+                cout << endl;
+                delete quarto;
+                hotel->lista_quartos.remover(idxQuarto);
+                cout << "Quarto removido com sucesso!" << endl;
+            }
         
         } else {
             cout << "Opção inválida. Tente novamente." << endl;

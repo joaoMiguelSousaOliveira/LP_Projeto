@@ -6,6 +6,7 @@ Quarto::Quarto(int numero, int tipo) : numero(numero), tipo(tipo) {}
 
 
 void Quarto::set_dados() {
+    
     cout << "Numero do quarto: ";
     cin >> numero;    
     

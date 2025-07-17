@@ -1,5 +1,6 @@
 #include "../include/cliente.hpp"
 #include "../include/pessoa.hpp"
+#include <limits>
 #include <iostream>
 
 using namespace std;
@@ -8,13 +9,13 @@ Cliente::Cliente(string nome, int tipo, string cpf, string telefone, string emai
 
 void Cliente::set_dados() {
     cout << "Digite o cpf: ";
-    getline(cin, cpf);
+    cin >> cpf;
     
     cout << endl << "Digite o Telefone: ";
-    getline(cin, telefone);
+    cin >> telefone;
 
     cout << endl << "Digite o Email: ";
-    getline(cin, email);
+    cin >> email;
 
     cout << endl;
 } 
