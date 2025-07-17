@@ -42,7 +42,7 @@ int main() {
         cout << "  2 - Iniciar cadastro de quartos" << endl;
         cout << "  3 - Efetuar reserva" << endl;
         cout << "  4 - Alterar dado Cadastrado [Cliente / Quarto]" << endl;
-        cout << "  5 - Excluir o último dado cadastrado" << endl;
+        cout << "  5 - Excluir dado cadastrado" << endl;
         cout << "  0 - Encerrar o programa" << endl;
         cout << "----------------------------------------------" << endl;
         cout << "Digite a opção desejada: ";
